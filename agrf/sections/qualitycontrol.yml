@@ -74,29 +74,29 @@ tabs:
         button_link: add link
         button_tip: Run workflow      
 
-  - id: Nanopore 
-    title: Nanopore data
-    heading_md: 
-    content:
-      - title_md: <code>NanoPlot</code> - visualize long read data
-        description_md: >
-          <p>
-            A plotting suite for long read sequencing data and alignments.
-          </p>
-        inputs:
-          - datatypes:
-              - fastq
-              - fastq.gz
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fnanoplot%2Fnanoplot"
-        button_tip: Run tool
+  # - id: Nanopore 
+  #   title: Nanopore data
+  #   heading_md: 
+  #   content:
+  #     - title_md: <code>NanoPlot</code> - visualize long read data
+  #       description_md: >
+  #         <p>
+  #           A plotting suite for long read sequencing data and alignments.
+  #         </p>
+  #       inputs:
+  #         - datatypes:
+  #             - fastq
+  #             - fastq.gz
+  #       button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fnanoplot%2Fnanoplot"
+  #       button_tip: Run tool
 
-      - title_md: <code>NanoFilt</code> - filter and trim long read data
-        description_md: >
-          <p>
-            Filter reads based on quality, length, or GC content.
-          </p>
-        inputs:
-          - datatypes:
-              - fastqsanger
-        button_link: add tool   
+  #     - title_md: <code>NanoFilt</code> - filter and trim long read data
+  #       description_md: >
+  #         <p>
+  #           Filter reads based on quality, length, or GC content.
+  #         </p>
+  #       inputs:
+  #         - datatypes:
+  #             - fastqsanger
+  #       button_link: add tool   
  

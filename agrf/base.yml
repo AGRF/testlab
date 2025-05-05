@@ -22,5 +22,6 @@ conclusion_md: templates/conclusion.md
 sections:
   - sections/data.yml
   - sections/qualitycontrol.yml
-  - sections/moreanalysis.yml
+#  - sections/moreanalysis.yml
+  - sections/microbial.yml
 

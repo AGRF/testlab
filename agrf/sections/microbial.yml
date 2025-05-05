@@ -1,0 +1,59 @@
+id: microbial
+title: Microbial profiling
+tabs:
+  - id: overview
+    title: Overview
+    heading_md: 
+    content:
+      - title_md: abc
+        description_md: |
+          * abc
+
+         
+        button_md: Upload data
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=upload1"
+      - title_md: def
+        description_md: |
+          * def
+        button_md: Compress data
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
+
+
+
+
+  - id: 16Sworkflows
+    title: Workflows
+    heading_md: 
+    content:
+
+      - title_md: 16S HiFi workflow
+        description_md: PacBio data 
+        button_md: Request support
+        button_link: /request/support
+
+  - id: tools
+    title: Tools
+    heading_md: 
+    content:
+
+      - title_md: tool 
+        description_md: tool
+        button_md: Request support
+        button_link: /request/support
+
+
+
+
+  - id: help
+    title: Help
+    heading_md: 
+    content:
+
+      - title_md: Galaxy Australia support
+        description_md: Request support, new tools, or additional storage. 
+        button_md: Request support
+        button_link: /request/support
+      - title_md: AGRF support
+        description_md: Contact AGRF for more help with your data. 
+        button_md: Contact AGRF
+        button_link: /request/support

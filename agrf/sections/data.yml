@@ -10,6 +10,7 @@ tabs:
           * Find your data at the [AGRF Hub](https://www.agrf.org.au/my-agrf-hub). 
           * Download this data to your computer.
           * Upload data from your computer to Galaxy.
+          * Tip: only import the files that you need. 
 
           *Note: Galaxy and the AGRF Hub are not configured for long-term data storage. Ensure you save raw and processed data to a secure archive.*
         button_md: Upload data
@@ -20,12 +21,12 @@ tabs:
           * This will save you time and storage space. 
         button_md: Compress data
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
-      - title_md: Learn how to use Galaxy
-        description_md: |
-          * Galaxy Australia is free to use. 
-          * Get started with these user-friendly tutorials. 
-        button_md: Galaxy tutorials
-        button_link: "https://training.galaxyproject.org/" 
+      # - title_md: Learn how to use Galaxy
+      #   description_md: |
+      #     * Galaxy Australia is free to use. 
+      #     * Get started with these user-friendly tutorials. 
+      #   button_md: Galaxy tutorials
+      #   button_link: "https://training.galaxyproject.org/" 
              
   - id: help
     title: Help
