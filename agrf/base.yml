@@ -19,9 +19,15 @@ footer_md: templates/footer.md
 conclusion_md: templates/conclusion.md
 
 # Data to be rendered into sections/tabs/accordion elements:
+
+#the sections are the yml files
+
 sections:
   - sections/data.yml
   - sections/qualitycontrol.yml
-#  - sections/moreanalysis.yml
   - sections/microbial.yml
+#  - sections/moreanalysis.yml
+  - sections/learn.yml
+  - sections/help.yml
+  - sections/agrf.yml
 

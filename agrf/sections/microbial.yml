@@ -5,23 +5,29 @@ tabs:
     title: Overview
     heading_md: 
     content:
-      - title_md: abc
+      - title_md: What is microbial profiling?
         description_md: |
           * abc
 
          
         button_md: Upload data
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=upload1"
-      - title_md: def
+
+      - title_md: What tools and workflows can I use?
         description_md: |
           * def
         button_md: Compress data
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
 
+      - title_md: What tutorials are available?
+        description_md: |
+          * eg link to GTN tutorials
+        button_md: Compress data
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
 
 
 
-  - id: 16Sworkflows
+  - id: workflows
     title: Workflows
     heading_md: 
     content:
@@ -42,18 +48,29 @@ tabs:
         button_link: /request/support
 
 
-
-
-  - id: help
-    title: Help
+  - id: tutorials
+    title: Tutorials
     heading_md: 
     content:
 
-      - title_md: Galaxy Australia support
-        description_md: Request support, new tools, or additional storage. 
+      - title_md: tool 
+        description_md: tool
         button_md: Request support
         button_link: /request/support
-      - title_md: AGRF support
-        description_md: Contact AGRF for more help with your data. 
-        button_md: Contact AGRF
-        button_link: /request/support
+
+
+
+
+  # - id: help
+  #   title: Help
+  #   heading_md: 
+  #   content:
+
+  #     - title_md: Galaxy Australia support
+  #       description_md: Request support, new tools, or additional storage. 
+  #       button_md: Request support
+  #       button_link: /request/support
+  #     - title_md: AGRF support
+  #       description_md: Contact AGRF for more help with your data. 
+  #       button_md: Contact AGRF
+  #       button_link: /request/support

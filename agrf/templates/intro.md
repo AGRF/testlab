@@ -51,25 +51,33 @@ then add Section, so data becomes dataSection
 <div class="container mt-3">
   <div class="row g-2">
     <!-- Row 1 -->
+    <!-- these get named for the sections that are in the yml files. 
+    Look in the yml file and see what the "id" is at the top of the file
+    then add that in here, with "Section" after it
+    eg the Import Data section refers to the data.yml file
+    which has id = import
+    so to link to that data.yml file, add in #importSection
+    don't forget the #
+    -->
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#importSetion">Import Data</a></div>
+      <div class="grid-item flex-fill"><a href="#importSection">Import Data</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#dataSection">Quality Control</a></div>
+      <div class="grid-item flex-fill"><a href="#qcSection">Quality Control</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="microbialSection">Microbial Profiling</a></div>
+      <div class="grid-item flex-fill"><a href="#microbialSection">Microbial Profiling</a></div>
     </div>
 
     <!-- Row 2 -->
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#learnGalaxy">Learn Galaxy</a></div>
+      <div class="grid-item flex-fill"><a href="#learnSection">Learn Galaxy</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#galaxyHelp">Galaxy Help</a></div>
+      <div class="grid-item flex-fill"><a href="#helpSection">Galaxy Help</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#contactAgrf">Contact AGRF</a></div>
+      <div class="grid-item flex-fill"><a href="#agrfSection">Contact AGRF</a></div>
     </div>
   </div>
 </div>
