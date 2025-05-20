@@ -28,6 +28,6 @@ sections:
   - sections/microbial.yml
 #  - sections/moreanalysis.yml
   - sections/learn.yml
-  - sections/help.yml
-  - sections/agrf.yml
+#  - sections/help.yml
+#  - sections/agrf.yml
 
