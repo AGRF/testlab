@@ -36,8 +36,6 @@ tabs:
           |                                      | taxonomy_barplot_vsearch.qzv    | Interactive taxonomy bar plot visualisation                                                                                                                                                                                                              |
           |                                      | Krona.qzv                       | Interactive radial chart showing hierarchical taxonomic abundance in each sample.                                                                                                                                                                        |
 
-        button_md: Compress data
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
 
       - title_md: What tutorials are available?
         description_md: |
