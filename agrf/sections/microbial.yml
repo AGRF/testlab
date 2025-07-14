@@ -1,13 +1,13 @@
 id: microbial
-title: Microbial profiling
+title: Microbial profiling - PacBio full length 16S rRNA analysis
 tabs:
   - id: overview
     title: Overview
     heading_md: 
     content:
-      - title_md: What is microbial profiling?
+      - title_md: About the service
         description_md: |
-          * abc
+          * PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall over to the next one if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
 
          
         button_md: Upload data
