@@ -7,7 +7,7 @@ tabs:
     content:
       - title_md: Get AGRF data into Galaxy
         description_md: |
-          * Find your data at the [AGRF Hub](https://www.agrf.org.au/my-agrf-hub). 
+          * Find your fastq data at the [AGRF Hub](https://www.agrf.org.au/my-agrf-hub). 
           * Download this data to your computer.
           * Upload data from your computer to Galaxy.
           * Tip: only import the files that you need. 
