@@ -19,6 +19,10 @@ tabs:
           - DADA2 QC metrics
           - ASV count vs non-chimeric denoised reads
           - Tables of top taxonomies
+            | Description         | Notes                                                                                       |
+            | ------------------- | ------------------------------------------------------------------------------------------- |
+            | A short description | This is a very long note that will not wrap. <br> It will just overflow or extend the cell. |
+
 
          
 
