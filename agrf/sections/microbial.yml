@@ -10,11 +10,14 @@ tabs:
           PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall over to the next one if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
           
           ##### Results include
+
           **HiFi read data**
+
             - A single .BAM file containing all samples
             - Demultiplexed .BAM files (per sample).
 
           **A summary report (html):**
+
             - Project summary QC statistics
             - Table of quality filtered read counts (per sample)
             - Charts and tables of the read quality/length distribution
@@ -27,8 +30,8 @@ tabs:
            | Fileanme                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
            | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
            | **Raw Data**                                                                                 |                                                                                                                                                                                                                                                                                                              |
-           | Single \*.bam file                                                                            | Contains aligned sequencing reads for all samples                                                                                                                                                                                                                                                            |
-           | Demultiplexed \*.BAM file (1 file per sample)                                                 | Contains aligned sequencing reads for each sample                                                                                                                                                                                                                                                            |
+           | Single \*.bam file                                                                           | Contains aligned sequencing reads for all samples                                                                                                                                                                                                                                                            |
+           | Demultiplexed \*.BAM file (1 file per sample)                                                | Contains aligned sequencing reads for each sample                                                                                                                                                                                                                                                            |
            | **Sequencing Metrics**                                                                       |                                                                                                                                                                                                                                                                                                              |
            | 📈 samples.demux.summary.qzv                                                                | QIIME visualization summarizing. <br> a) Per-sample sequence counts (inc min, median, mean max, frequency histogram). <br> b) Quality (interactive plot of read length by quality score show seven-number quality summary plus sequence length summary).                                                     |
            | 🖹 per-sample-fastq-counts.tsv                                                              | Per-sample sequence counts                                                                                                                                                                                                                                                                                   |
@@ -62,11 +65,14 @@ tabs:
            | 🗜️ unweighted_unifrac_pcoa_results.qza <br> 📈 unweighted_unifrac_emperor.qzv            | PCA results and visualization of the unweighted UniFrac distance.                                                                                                                                                                                                                                            |
            | 🗜️ weighted_unifrac_pcoa_results.qza <br> 📈 weighted_unifrac_emperor.qzv                | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
 
-      - title_md: What tutorials are available?
+      - title_md: File formats used
         description_md: |
-          * eg link to GTN tutorials
-        button_md: Compress data
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
+          | Type                                  | Description                                                                                                                     |
+          | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+          | .qza (QIIME Zipped Artifact)          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
+          | .qzv (QIIME Zipped Visualization)     | Zip file containing data and data provenance. Can be visualized with QIIME 2 View (https://view.qiime2.org/).                   |
+          | .biom (Biological Observation Matrix) | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
+          | .tsv (tab separated values)           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
 
 
@@ -83,8 +89,10 @@ tabs:
   - id: tools
     title: Tools
     heading_md: 
-    content:
-
+    content: 
+        ###Sequencing Metrics and Quality Control
+        Text describing sequenicng metrics 
+        
       - title_md: tool 
         description_md: tool
         button_md: Request support
