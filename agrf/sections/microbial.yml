@@ -62,16 +62,16 @@ tabs:
            | 🗜️ jaccard_pcoa_results.qza <br> 📈 jaccard_emperor.qzv                                  | PCA results and visualization of the Jaccard distance.                                                                                                                                                                                                                                                       |
            | 🗜️ bray_curtis_pcoa_results.qza <br> 📈 bray_curtis_emperor.qzv                          | PCA results and visualization of the Bray-Curtis distance.                                                                                                                                                                                                                                                   |
            | 🗜️ unweighted_unifrac_pcoa_results.qza <br> 📈 unweighted_unifrac_emperor.qzv            | PCA results and visualization of the unweighted UniFrac distance.                                                                                                                                                                                                                                            |
-           | 🗜️ weighted_unifrac_pcoa_results.qza <br> 📈 weighted_unifrac_emperor.qzv                | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
+           | 🗜️ `weighted_unifrac_pcoa_results.qza` <br> 📈 weighted_unifrac_emperor.qzv                | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
 
       - title_md: File formats used
         description_md: |
           | Type                                  | Description                                                                                                                     |
           | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-          | .qza (QIIME Zipped Artifact)          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
-          | .qzv (QIIME Zipped Visualization)     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                   |
-          | .biom (Biological Observation Matrix) | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
-          | .tsv (tab separated values)           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
+          | `.qza` (QIIME Zipped Artifact)          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
+          | `.qzv` (QIIME Zipped Visualization)     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                   |
+          | `.biom` (Biological Observation Matrix) | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
+          | `.tsv` (tab separated values)           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
 
 
@@ -90,8 +90,11 @@ tabs:
     heading_md: 
     content: 
         
-      - title_md: Sequencing Metrics
+      - title_md: Working with .qza files
         description_md: |
+         QIIME2 artifact files are a self contained version control package that stores data (e.g., sequences, feature tables, trees) produced or consumed by QIIME 2 plugins. These are just zip files and can be opened by any compression software, however you can use tools to convert to other formats. 
+
+         qiime2 tools export
 
         button_md: Request support
         button_link: /request/support
