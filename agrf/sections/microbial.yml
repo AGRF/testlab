@@ -30,8 +30,7 @@ tabs:
            | Fileanme                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
            | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
            | **Raw Data**                                                                                 |                                                                                                                                                                                                                                                                                                              |
-           | Single \*.bam file                                                                           | Contains aligned sequencing reads for all samples                                                                                                                                                                                                                                                            |
-           | Demultiplexed \*.BAM file (1 file per sample)                                                | Contains aligned sequencing reads for each sample                                                                                                                                                                                                                                                            |
+           | Demultiplexed \*.FASTQ file (1 file per sample)                                                | Contains sequencing reads for each sample                                                                                                                                                                                                                                                            |
            | **Sequencing Metrics**                                                                       |                                                                                                                                                                                                                                                                                                              |
            | 📈 samples.demux.summary.qzv                                                                | QIIME visualization summarizing. <br> a) Per-sample sequence counts (inc min, median, mean max, frequency histogram). <br> b) Quality (interactive plot of read length by quality score show seven-number quality summary plus sequence length summary).                                                     |
            | 🖹 per-sample-fastq-counts.tsv                                                              | Per-sample sequence counts                                                                                                                                                                                                                                                                                   |
@@ -90,11 +89,10 @@ tabs:
     title: Tools
     heading_md: 
     content: 
-        ###Sequencing Metrics and Quality Control
-        Text describing sequenicng metrics 
         
-      - title_md: tool 
-        description_md: tool
+      - title_md: Sequencing Metrics
+        description_md: |
+
         button_md: Request support
         button_link: /request/support
 
