@@ -69,7 +69,7 @@ tabs:
           | Type                                  | Description                                                                                                                     |
           | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
           | .qza (QIIME Zipped Artifact)          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
-          | .qzv (QIIME Zipped Visualization)     | Zip file containing data and data provenance. Can be visualized with QIIME 2 View (https://view.qiime2.org/).                   |
+          | .qzv (QIIME Zipped Visualization)     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                   |
           | .biom (Biological Observation Matrix) | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
           | .tsv (tab separated values)           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
