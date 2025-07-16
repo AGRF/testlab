@@ -30,7 +30,7 @@ tabs:
            | Fileanme                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
            | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
            | **Raw Data**                                                                                 |                                                                                                                                                                                                                                                                                                              |
-           | Demultiplexed \*.FASTQ file (1 file per sample)                                                | Contains sequencing reads for each sample                                                                                                                                                                                                                                                            |
+           | Demultiplexed \*.FASTQ file (1 file per sample)                                              | Contains sequencing reads for each sample                                                                                                                                                                                                                                                                    |
            | **Sequencing Metrics**                                                                       |                                                                                                                                                                                                                                                                                                              |
            | 📈 samples.demux.summary.qzv                                                                | QIIME visualization summarizing. <br> a) Per-sample sequence counts (inc min, median, mean max, frequency histogram). <br> b) Quality (interactive plot of read length by quality score show seven-number quality summary plus sequence length summary).                                                     |
            | 🖹 per-sample-fastq-counts.tsv                                                              | Per-sample sequence counts                                                                                                                                                                                                                                                                                   |
@@ -62,14 +62,14 @@ tabs:
            | 🗜️ jaccard_pcoa_results.qza <br> 📈 jaccard_emperor.qzv                                  | PCA results and visualization of the Jaccard distance.                                                                                                                                                                                                                                                       |
            | 🗜️ bray_curtis_pcoa_results.qza <br> 📈 bray_curtis_emperor.qzv                          | PCA results and visualization of the Bray-Curtis distance.                                                                                                                                                                                                                                                   |
            | 🗜️ unweighted_unifrac_pcoa_results.qza <br> 📈 unweighted_unifrac_emperor.qzv            | PCA results and visualization of the unweighted UniFrac distance.                                                                                                                                                                                                                                            |
-           | 🗜️ `weighted_unifrac_pcoa_results.qza` <br> 📈 weighted_unifrac_emperor.qzv                | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
+           | 🗜️ `weighted_unifrac_pcoa_results.qza` <br> 📈 weighted_unifrac_emperor.qzv              | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
 
       - title_md: File formats used
         description_md: |
-          | Type                                  | Description                                                                                                                     |
-          | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+          | Type                                       | Description                                                                                                                     |
+          | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
           | `.qza` <br> QIIME Zipped Artifact          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
-          | `.qzv` <br> QIIME Zipped Visualization     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                   |
+          | `.qzv` <br> QIIME Zipped Visualization     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                  |
           | `.biom` <br> Biological Observation Matrix | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
           | `.tsv` <br> tab separated values           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
@@ -96,10 +96,9 @@ tabs:
          QIIME2 artifact files are a self contained version control package that stores data (e.g., sequences, feature tables, trees) produced or consumed by QIIME 2 plugins. These are just zip files and can be opened by any compression software, however qiime tools export can be useful to convert to other formats. 
 
         button_link: /request/support
-    # heading_md: |
+    heading_md: |
      ##### Alpha Diversity
-    #  Alpha diversity is a measure of species richness and/or evenness within one sample.
-    # content: 
+      Alpha diversity is a measure of species richness and/or evenness within one sample.
         
       - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity
         description_md: |
