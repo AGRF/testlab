@@ -108,7 +108,7 @@ tabs:
                 There are many metrics used to expressed alpha. Some common ones are: 
                button_link: /request/support
 
-             - title_md: qiime2 diversity alpha-phylogenetic Calculate alpha diversity
+             - title_md: `qiime2 diversity alpha-phylogenetic` - Calculate alpha diversity 
                description_md: |
                 This tool calculates alpha diversity metrics from features teables (like the tool above), but also includes information from a phylogenetic tree.
           
