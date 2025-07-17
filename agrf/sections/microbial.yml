@@ -113,7 +113,7 @@ tabs:
                 Use this tool if you need to recalculate alpha diversity or want calculate a different alpha diversity metric from a feature table.  Feature tables are typically contained within certain `.qza` files.
           
                inputs:
-                - datatypes:
+                datatypes:
                   - qza
                button_link: /request/support
 
@@ -122,7 +122,7 @@ tabs:
                 This tool calculates alpha diversity metrics from features teables (like the tool above), but also includes information from a phylogenetic tree.
           
                inputs:
-                 - datatypes:
+                 datatypes:
                   - qza
          
                button_link: /request/support
