@@ -90,14 +90,16 @@ tabs:
     heading_md: |
     content: 
       subsections:
-          - id: general_tools
-            title: General Tools
+          - id: QIIME2_formats
+            title: Working with QIIME 2 files
             content:
 
-            - title_md: <code>qiime2 tools export</code> - Convert .qza files to other formats
+            - title_md: <code>qiime2 tools export</code> - Convert `.qza` files to other formats
               description_md: |
                QIIME2 artifact files are a self contained version control package that stores data (e.g., sequences, feature tables, trees) produced or consumed by QIIME 2 plugins. These are just zip files and can be opened by any compression software, however qiime tools export can be useful to convert to other formats. 
               button_link: /request/support
+
+            - title_md: <code>QIIME vizualisation extractor</code> - Visualise `.qzv' files in Galaxy.
 
           - id: alpha_diversity
             title: Alpha Diversity
@@ -112,18 +114,11 @@ tabs:
 
                 Use this tool if you need to recalculate alpha diversity or want calculate a different alpha diversity metric from a feature table.  Feature tables are typically contained within certain `.qza` files.
           
-               inputs:
-                datatypes:
-                  - qza
                button_link: /request/support
 
              - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phyogenetic tree)
                description_md: |
                 This tool calculates alpha diversity metrics from features teables (like the tool above), but also includes information from a phylogenetic tree.
-          
-               inputs:
-                 datatypes:
-                  - qza
          
                button_link: /request/support
 
