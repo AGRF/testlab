@@ -104,24 +104,24 @@ tabs:
             title: Alpha Diversity
             # heading_md: Alpha diversity is a measure of species richness and/or evenness within one sample.
             content:  
-                 
-             - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity
+
+             - title_md: qiime2 diversity alpha Calculate alpha diversity
                description_md: |
                 There are many metrics used to expressed alpha. Some common ones are:
 
-               - `Observed_features` (richness)
-               - `Shannon` Index (richness + evenness)
-               - `pielou_e` Pielous Evenness (how equally distributed species are)
+                - `Observed_features` (richness)
+                - `Shannon` Index (richness + evenness)
+                - `pielou_e` Pielous Evenness (how equally distributed species are)
 
                 Use this tool if you need to recalculate alpha diversity or want calculate a different alpha diversity metric from a feature table.  Feature tables are typically contained within certain `.qza` files.
           
                inputs:
-               - datatypes:
-                 - qza
+                - datatypes:
+                  - qza
          
                button_link: /request/support
         
-               title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity
+               title_md: qiime2 diversity alpha-phylogenetic Calculate alpha diversity
                description_md: |
                 This tool calculates alpha diversity metrics from features teables (like the tool above), but also includes information from a phylogenetic tree.
           
