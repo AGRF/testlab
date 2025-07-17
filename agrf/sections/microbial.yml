@@ -93,6 +93,7 @@ tabs:
           - id: general_tools
             title: General Tools
             content:
+
             - title_md: <code>qiime2 tools export</code> - Convert .qza files to other formats
               description_md: |
                QIIME2 artifact files are a self contained version control package that stores data (e.g., sequences, feature tables, trees) produced or consumed by QIIME 2 plugins. These are just zip files and can be opened by any compression software, however qiime tools export can be useful to convert to other formats. 
@@ -101,8 +102,9 @@ tabs:
 
           - id: alpha_diversity
             title: Alpha Diversity
-            heading_md: Alpha diversity is a measure of species richness and/or evenness within one sample.
-            content:       
+            # heading_md: Alpha diversity is a measure of species richness and/or evenness within one sample.
+            content:  
+                 
              - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity
                description_md: |
                 There are many metrics used to expressed alpha. Some common ones are:
