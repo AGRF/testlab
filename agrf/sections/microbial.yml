@@ -103,7 +103,7 @@ tabs:
             title: Alpha Diversity
             content:  
 
-             - title_md: qiime2 diversity alpha Calculate alpha diversity
+             - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity
                description_md: |
                 There are many metrics used to expressed alpha. Some common ones are: 
                button_link: /request/support
