@@ -13,8 +13,7 @@ tabs:
 
           **HiFi read data**
 
-            - A single .BAM file containing all samples
-            - Demultiplexed .BAM files (per sample).
+            - Demultiplexed .FASTQ files (per sample).
 
           **A summary report (html):**
 
@@ -24,6 +23,14 @@ tabs:
             - DADA2 QC metrics
             - ASV count vs non-chimeric denoised reads
             - Tables of top taxonomies
+        
+      - title_md: Sequencing Output
+        description_md: |      
+         **Read length:**  ~1500 bp - Full-length reads are defined as reads with both F27 and R1492 primers
+
+         **Number of Reads:** Typically greater than 50K reads per sample.
+
+         Read output varies depending on the composition and quality of the sample. Analyses provided by AGRF capps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
          
       - title_md: What files are included?
         description_md: |
@@ -88,6 +95,10 @@ tabs:
   - id: tools
     title: Tools
     heading_md: |
+      The tools in this section have been divided into subsections to make it
+      easier for users to find the tools they need. This must replace the
+      entire value of the <code>content</code> key i.e. you can't mix
+      subsections with standalone items.
     content: 
       subsections:
           - id: QIIME2_formats
@@ -105,11 +116,19 @@ tabs:
 
           - id: alpha_diversity
             title: Alpha Diversity
+            description_md: |
+             This is a test
+            
+
             content:  
 
              - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity (without a phyogenetic tree)
                description_md: |
                 There are many metrics used to expressed alpha. Some common ones are: 
+
+                * Observed features (richness)
+                * Shannon Index (richness + evenness)
+                * Pielou's Evenness (how equally distributed species are)
 
                button_link: /request/support
 
@@ -118,6 +137,12 @@ tabs:
                 This tool calculates alpha diversity metrics from features teables (like the tool above), but also includes information from a phylogenetic tree.
          
                button_link: /request/support
+
+               view_link: https://workflowhub.eu/workflows/222
+               view_tip: View in WorkflowHub
+               view_icon: tutorial
+
+
 
   - id: tutorials
     title: Tutorials
