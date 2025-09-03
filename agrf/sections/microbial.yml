@@ -195,10 +195,13 @@ tabs:
                buttons:
                 - icon: run
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
-                  tip: Calculate Alpha diversity
+                  tip: QIIME2 - Alpha diversity
+                - icon: run
+                  link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fkrakentools_alpha_diversity%2Fkrakentools_alpha_diversity"
+                  tip:  KRAKEN - Alpha diversity
                 - icon: run
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
-                  tip: Calculate Alpha diversity (with a phlyogenetic tree)
+                  tip: QIIME2 - Alpha diversity (phlyogenetic)
 
                #button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
 
@@ -376,10 +379,10 @@ tabs:
     heading_md: 
     content:
 
-      - title_md: tool 
+      - title_md: Calculating α and β diversity from microbiome taxonomic data 
         description_md: tool
-        button_md: Request support
-        button_link: /request/support
+        button_md: Tutorials
+        button_link: https://training.galaxyproject.org/training-material//topics/microbiome/tutorials/diversity/tutorial.html
 
 
 
