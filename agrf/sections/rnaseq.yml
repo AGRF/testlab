@@ -245,23 +245,6 @@ tabs:
               button_md: Run edgeR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fedger%2Fedger"
 
-            - title_md: <code>DESeq2</code> - Differential gene expression analysis
-              description_md: |
-                Identify differentially expressed genes between sample groups using RNA-seq count data. DESeq2 includes normalisation and statistical testing steps to compare gene expression across experimental conditions.
-
-                Output: Produces differential expression result tables with log fold change, p-values, and adjusted significance values (.tsv, .txt).
-              inputs:
-                - label: Gene count matrix
-                  datatypes:
-                    - tsv
-                - label: Sample metadata
-                  datatypes:
-                    - tsv
-              outputs:
-                - label: Differential expression results (TSV)
-              button_md: Run DESeq2
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fdeseq2%2Fdeseq2"
-
         - id: visualisation
           title: Visualisation
           content:
