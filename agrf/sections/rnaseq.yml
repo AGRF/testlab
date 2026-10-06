@@ -8,21 +8,21 @@ tabs:
 
         - title_md: About the service
           description_md: |
-            Illumina RNA-seq is used to quantify gene expression by sequencing transcriptomic RNA from biological samples.
+            The RNA-seq bioinformatics pipeline offered by AGRF is used to accurately quantify and classify bulk RNA content in homogenous samples. It can be applied to sequenced libraries of mRNA transcripts through Illumina's Stranded mRNA Prep, or the whole transcriptome through Illumina's Total RNA Prep.
 
-            Sequencing is performed using paired-end reads (150 bp) on an Illumina NovaSeq platform. Raw sequencing data undergoes primary processing including demultiplexing and quality control to generate FASTQ files.
+            Sequencing is performed on an Illumia NovaSeq X platform using a 2 x 150bp paired-end configuration. Prior to RNA-seq specific analysis, the raw sequencing data undergoes primary processing including demultiplexing and quality control on the resulting FASTQ files.
 
-            The data is processed through a standard RNA-seq analysis workflow, which includes trimming, alignment to a reference genome, transcript assembly, and gene-level quantification. Reads are aligned using the STAR aligner, and gene counts are summarised using featureCounts.
+            The RNA-seq analysis workflow itself includes trimming, alignment to a reference genome, reference-based transcript assembly, and gene-level expression quantification. Trimmed reads are aligned using the splice-aware STAR aligner, and gene counts are summarised across all samples in the dataset using featureCounts.
 
-            Optional downstream analysis includes differential gene expression using edgeR, enabling identification of significantly differentially expressed genes between experimental conditions.
+            Optional downstream analysis includes differential gene expression using edgeR, enabling identification of significantly differentially expressed genes between experimental conditions, and pathway over-representation analysis to report the pathways represented by these genes.
 
-            The final outputs provide gene expression measurements, alignment data, transcript structures, and statistical analysis results.
+            The final outputs across all analysis services generate raw and normalised gene expression counts, alignment data, transcript structures, illustrative plots, and statistical analysis results.
 
         - title_md: Sequencing Output
           description_md: |
             **Read length:** 150 bp paired-end reads  
 
-            **Number of reads:** Varies per sample (typically millions of reads per sample)  
+            **Number of reads:** Varies per sample (typically a minimum of 20 million for mRNA, and 50 million for Total RNA)  
 
             Raw sequencing reads are provided as FASTQ files containing sequence and quality score information.
 
@@ -34,11 +34,12 @@ tabs:
             | Demultiplexed FASTQ files (.fastq.gz) | Raw sequencing reads for each sample |
             | *.bam | Aligned reads mapped to the reference genome |
             | *.bam.bai | BAM index files for visualisation |
-            | features_summary.csv | Summary of mapping statistics with genome and exons |
+            | features_summary.csv | Summary of mapping statistics to genome and annotated exon features |
             | gene_counts.txt | Gene-level read count matrix |
-            | *.gtf | Transcript assembly (gene and isoform structure) |
-            | MDSplot.pdf | Sample clustering visualisation |
-            | Differential expression analysis results | MDS plots, box plots, library size plots, DE tables, smear plots, and heatmaps from edgeR analysis |
+            | *.gtf | Transcript assembly (alternatively spliced isoform structure) |
+            | MDSplot.pdf | Sample clustering visualisation through Multi-Dimensional Scaling |
+            | Differential expression analysis results | Normalised MDS plots, library size bar and box plots, DE tables, MD plots, and heatmaps from edgeR analysis |
+            | Pathway over-representation analysis results | ORA tables ranking significant pathways from the GO, KEGG, and Reactome databases |
         - title_md: File formats used
           description_md: |
 
