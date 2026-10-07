@@ -238,7 +238,7 @@ tabs:
               description_md: |
                 Explore sample clustering using principal component analysis based on normalised expression values. PCA helps identify major sources of variation, outliers, and whether samples group according to biological or experimental conditions.
 
-                Note: The AGRF Bionformatics pipeline uses the edgeR::plotMDS() function to generate a similar output.
+                Note: The AGRF Bioinformatics pipeline uses the edgeR::plotMDS() function to generate a similar output.
 
                 Output: Produces PCA plots showing sample relationships and clustering patterns (.png).
               inputs:
