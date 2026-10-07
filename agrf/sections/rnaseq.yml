@@ -138,7 +138,7 @@ tabs:
               description_md: |
                 Align RNA-seq reads to a reference genome using the splice-aware STAR aligner. This step maps sequencing reads to genomic locations and prepares the data for downstream quantification and transcript structure analysis.
 
-                Output: Produces aligned read files and alignment statistics (.bam).
+                Output: Produces aligned read files (.bam) and alignment statistics in STAR log files (.txt).
 
               inputs:
                 - label: Trimmed RNA-seq reads
