@@ -90,7 +90,7 @@ tabs:
 
             - title_md: <code>SortMeRNA</code> - Estimate rRNA contamination
               description_md: |
-                Identify proportion of ribosomal RNA reads present in RNA-seq data, using the silva and rfam databases as reference. This step helps troubleshoot sample related issues and determine if the RiboZero depletion has been effective in Total RNA libraries (this is not necessary in mRNA libraries due to the polyA capture ignoring rRNA).
+                Identify the proportion of ribosomal RNA reads present in RNA-seq data using the SILVA and Rfam databases as references. This step helps troubleshoot sample-related issues and determine whether Ribo-Zero depletion has been effective in Total RNA libraries (this is unnecessary for mRNA libraries because poly(A) capture excludes rRNA).
 
                 Optionally, you could use SortMeRNA to also filter these rRNA reads before alignment but this can be computationally expensive and is not necessary for mRNA data, or in Total RNA data where depletion is effective. 
 
