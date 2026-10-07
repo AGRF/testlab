@@ -10,7 +10,7 @@ tabs:
           description_md: |
             The RNA-seq bioinformatics pipeline offered by AGRF is used to accurately quantify and classify bulk RNA content in homogenous samples. It can be applied to sequenced libraries of mRNA transcripts through Illumina's Stranded mRNA Prep, or the whole transcriptome through Illumina's Total RNA Prep.
 
-            Sequencing is performed on an Illumia NovaSeq X platform using a 2 x 150bp paired-end configuration. Prior to RNA-seq specific analysis, the raw sequencing data undergoes primary processing including demultiplexing and quality control on the resulting FASTQ files.
+            Sequencing is performed on an Illumina NovaSeq X platform using a 2 x 150bp paired-end configuration. Prior to RNA-seq specific analysis, the raw sequencing data undergoes primary processing including demultiplexing and quality control on the resulting FASTQ files.
 
             The RNA-seq analysis workflow itself includes trimming, alignment to a reference genome, reference-based transcript assembly, and gene-level expression quantification. Trimmed reads are aligned using the splice-aware STAR aligner, and gene counts are summarised across all samples in the dataset using featureCounts.
 
@@ -49,8 +49,8 @@ tabs:
             | .bam | Binary alignment files storing mapped reads |
             | .bai | Index files for BAM visualisation |
             | .gtf | Transcript annotation and assembly |
-            | .txt / .csv | Gene counts and summary statistics |
-            | .pdf | Visualisation outputs |
+            | .tsv / .csv | Gene counts and summary statistics |
+            | .pdf / .png | Visualisation outputs |
           
   - id: tools
     title: Tools
@@ -62,11 +62,11 @@ tabs:
           content:
             - title_md: <code>FastQC</code> - Assess sequencing read quality
               description_md: |
-                Assess the quality of raw RNA-seq reads before downstream analysis. This tool checks base quality scores, GC content, sequence length distribution, duplication levels, and possible adapter contamination.
+                Assess the quality of raw RNA-seq reads before downstream analysis. This tool checks base quality scores, GC content, sequence length distribution, and adapter contamination. Note that duplication level checks are expected to fail in RNA-seq libraries, corresponding to real gene expression signals being mixed up with PCR duplicates.
                
                 Output: Produces HTML quality reports and summary statistics for each FASTQ file (.html, .zip).
               inputs:
-                - label: Sequencing reads (FASTQ)
+                - label: Raw sequence reads
                   datatypes:
                     - fastq
               outputs:
@@ -74,9 +74,39 @@ tabs:
               button_md: Run FastQC
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
 
+            - title_md: <code>Trim Galore</code> - Trim adapters and low-quality bases
+              description_md: |
+                Remove adapter sequences and low-quality bases from RNA-seq reads before alignment. This step improves read quality and helps reduce alignment errors caused by technical sequence contamination.
+
+                Output: Produces trimmed sequencing reads for downstream analysis (.fastq.gz).
+              inputs:
+                - label: Raw sequence reads
+                  datatypes:
+                    - fastq
+              outputs:
+                - label: Trimmed reads (FASTQ)
+              button_md: Run Trim Galore
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftrim_galore%2Ftrim_galore"
+
+            - title_md: <code>SortMeRNA</code> - Estimate rRNA contamination
+              description_md: |
+                Identify proportion of ribosomal RNA reads present in RNA-seq data, using the silva and rfam databases as reference. This step helps troubleshoot sample related issues and determine if the RiboZero depletion has been effective in Total RNA libraries (this is not necessary in mRNA libraries due to the polyA capture ignoring rRNA).
+
+                Optionally, you could use SortMeRNA to also filter these rRNA reads before alignment but this can be computationally expensive and is not necessary for mRNA data, or in Total RNA data where depletion is effective. 
+
+                Output: Text files reporting rRNA content.
+              inputs:
+                - label: Trimmed sequence reads
+                  datatypes:
+                    - fastq
+              outputs:
+                - label: SortMeRNA log files
+              button_md: Run sortmerna
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Frnateam%2Fsortmerna%2Fbg_sortmerna"
+
             - title_md: <code>MultiQC</code> - Aggregate QC reports
               description_md: |
-                Combine quality control reports from multiple samples into one summary report. This tool is useful for comparing FastQC, trimming, alignment, and other QC results across all samples in a project.
+                Combine quality control reports from multiple samples into one summary report. This tool is useful for compiling FastQC, trimming, alignment, and other QC results across all samples in a project and can be run at the end of the pipeline to gather as many metrics as possible.
 
                 Output: Produces a single interactive summary report across samples (.html).
               inputs:
@@ -84,10 +114,16 @@ tabs:
                   datatypes:
                     - html
                     - zip
-                - label: FastP reports
+                - label: Trim Galore (cutadapt) logs
                   datatypes:
-                    - json
-                - label: Cutadapt / Trim Galore logs
+                    - txt
+                - label: SortMeRNA logs
+                  datatypes:
+                    - txt
+                - label: STAR logs
+                  datatypes:
+                    - txt
+                - label: featureCounts logs
                   datatypes:
                     - txt
               outputs:
@@ -95,69 +131,38 @@ tabs:
               button_md: Run MultiQC
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmultiqc%2Fmultiqc"
 
-            - title_md: <code>Trim Galore</code> - Trim adapters and low-quality bases
-              description_md: |
-                Remove adapter sequences and low-quality bases from RNA-seq reads before alignment. This step improves read quality and helps reduce alignment errors caused by technical sequence contamination.
-
-                Output: Produces trimmed sequencing reads for downstream analysis (.fastq.gz).
-              inputs:
-                - label: Sequencing reads (FASTQ)
-                  datatypes:
-                    - fastqsanger
-              outputs:
-                - label: Trimmed reads (FASTQ)
-              button_md: Run Trim Galore
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftrim_galore%2Ftrim_galore"
-
-            - title_md: <code>sortmerna</code> - Remove rRNA contamination
-              description_md: |
-                Identify and remove ribosomal RNA reads from RNA-seq data. This step helps reduce unwanted rRNA contamination so that downstream analysis focuses on informative transcriptomic reads.
-
-                Output: Produces filtered sequencing reads with reduced rRNA content (.fastq.gz).
-              inputs:
-                - label: Sequencing reads (FASTQ)
-                  datatypes:
-                    - fastq
-              outputs:
-                - label: Filtered reads (FASTQ)
-              button_md: Run sortmerna
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Frnateam%2Fsortmerna%2Fbg_sortmerna"
-
         - id: alignment
           title: Alignment
           content:
             - title_md: <code>STAR</code> - Align reads to reference genome
               description_md: |
-                Align RNA-seq reads to a reference genome using the STAR aligner. This step maps sequencing reads to genomic locations and prepares the data for downstream quantification and transcript analysis.
+                Align RNA-seq reads to a reference genome using the splice-aware STAR aligner. This step maps sequencing reads to genomic locations and prepares the data for downstream quantification and transcript structure analysis.
 
-                Output: Produces aligned read files and alignment statistics (.bam, .sam, .tab).
+                Output: Produces aligned read files and alignment statistics (.bam).
 
               inputs:
-                - label: RNA-seq reads (FASTQ)
+                - label: Trimmed RNA-seq reads
                   datatypes:
                     - fastq
-                - label: Reference genome (fasta)
+                - label: Reference genome
                   datatypes:
                     - fasta
-                - label: Gene annotation file (GTF)
+                - label: Reference annotation file
                   datatypes:
                     - gtf
               outputs:
                 - label: Aligned reads (BAM)
               button_md: Run STAR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
-
-        - id: post_alignment
-          title: BAM processing
-          content:
+              
             - title_md: <code>samtools sort</code> - Sort BAM files
               description_md: |
                 Sort aligned BAM files by genomic coordinates. Sorting is required for many downstream tools including indexing, visualisation, and read quantification workflows.
 
-                Output: Produces sorted alignment files suitable for downstream analysis (.bam).
+                Output: Produces sorted alignment files suitable for downstream analysis (.bam.bai).
 
               inputs:
-                - label: Aligned reads (BAM)
+                - label: Aligned reads
                   datatypes:
                     - bam
               outputs:
@@ -165,19 +170,19 @@ tabs:
               button_md: Run samtools sort
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Fsamtools_sort%2Fsamtools_sort"
  
-        - id: quantification
-          title: Gene quantification
+        - id: assembly
+          title: Transcript assembly
           content:
-            - title_md: <code>StringTie</code> - Assemble and quantify transcripts
+            - title_md: <code>StringTie</code> - Assemble transcript isoforms
               description_md: |
                 Assemble transcripts and estimate transcript abundance from aligned RNA-seq reads. This tool can reconstruct transcript structures and support gene or isoform-level expression analysis.
 
-                Output: Produces transcript assembly and expression estimate files (.gtf, .tab).
+                Output: Produces transcript assembly and expression estimate files (.gtf).
               inputs:
-                - label: Aligned reads (BAM)
+                - label: Aligned reads
                   datatypes:
                     - bam
-                - label: Reference annotation (GTF)
+                - label: Reference annotation file
                   datatypes:
                     - gtf
               outputs:
@@ -185,55 +190,35 @@ tabs:
               button_md: Run StringTie
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstringtie%2Fstringtie"
           
-            - title_md: <code>featureCounts</code> - Count reads per gene
+        - id: quantification
+          title: Gene expression quantification
+          content:
+            - title_md: <code>featureCounts</code> - Quantify reads counts per gene
               description_md: |
-                Count the number of reads assigned to genes using aligned BAM files and a gene annotation file. This step converts mapped reads into a gene-level count matrix for statistical analysis.
+                Count the number of reads assigned to genes using aligned BAM files and a gene annotation file. This step converts uniquely mapped reads into gene-level count information for each sample, which can then be merged into a single matrix for downstream statistical analysis using tools like edgeR.
 
                 Output: Produces gene count tables for downstream filtering, normalisation, and differential expression analysis (.txt, .tsv).
 
               inputs:
-                - label: Aligned reads (BAM)
+                - label: Aligned reads
                   datatypes:
                     - bam
-                - label: Gene annotation file
+                - label: Reference annotation file
                   datatypes:
                     - gtf
-                    - gff
               outputs:
                 - label: Gene count matrix (TSV)
               button_md: Run featureCounts
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
-        - id: filtering
-          title: Filtering
-          content:
-            - title_md: Filter samples and lowly expressed genes
-              description_md: |
-                Filter count matrices by selecting relevant samples and removing lowly expressed genes before differential expression analysis.
-
-                Output: Produces filtered count matrices suitable for downstream statistical analysis (.tsv, .txt).
-              inputs:
-                - label: Gene count matrix
-                  datatypes:
-                    - tsv
-                - label: Sample metadata
-                  datatypes:
-                    - tsv
-              outputs:
-                - label: Filtered gene count matrix
-                  datatypes:
-                    - tsv
-              button_md: Run Filter
-              button_link: "{{ galaxy_base_url }}/?tool_id=Filter1"
-
-        - id: analysis
+        - id: de_analysis
           title: Differential expression
           content:
             - title_md: <code>edgeR</code> - Differential expression analysis
               description_md: |
-                Perform differential expression analysis to identify genes with significant expression differences between sample groups. edgeR is commonly used for RNA-seq count data and models biological variation between replicates.
+                Perform differential expression analysis to identify genes with statistically significant expression differences between nominated sample groups. edgeR is commonly used for RNA-seq count data and models biological variation between replicates. It is recommended to have at least 3 samples per group.
 
-                Output: Produces differential expression result tables containing log fold change, p-values, and adjusted significance values (.tsv, .txt).
+                Output: Produces differential expression result tables containing log fold change, p-values, and adjusted p-values (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -251,9 +236,11 @@ tabs:
           content:
             - title_md: PCA - Visualise sample clustering
               description_md: |
-                Explore sample clustering using principal component analysis based on expression values. PCA helps identify major sources of variation, outliers, and whether samples group according to biological or experimental conditions.
+                Explore sample clustering using principal component analysis based on normalised expression values. PCA helps identify major sources of variation, outliers, and whether samples group according to biological or experimental conditions.
 
-                Output: Produces PCA plots showing sample relationships and clustering patterns (.png, .pdf, .html).
+                Note: The AGRF Bionformatics pipeline uses the edgeR::plotMDS() function to generate a similar output.
+
+                Output: Produces PCA plots showing sample relationships and clustering patterns (.png).
               inputs:
                 - label: Normalised expression matrix
                   datatypes:
@@ -267,11 +254,13 @@ tabs:
               description_md: |
                 Visualise gene expression patterns across samples using a heatmap. Heatmaps help identify clusters of genes or samples with similar expression profiles.
 
-                Output: Produces heatmap visualisations showing expression patterns across selected genes and samples (.png, .pdf, .html).
+                Optionally, try restricting your input data to only include the top DE results to illustrate the most significant results from your dataset.
+
+                Output: Produces heatmap visualisations showing expression patterns across selected genes and samples (.png, .pdf).
               inputs:
-                - label: Expression matrix 
+                - label: Differential expression results
                   datatypes:
-                    - tsv
+                    - txt
               outputs:
                  - label: Heatmap visualisation
               button_md: Run Heatmap
@@ -283,13 +272,32 @@ tabs:
 
                 Output: Produces volcano plot visualisations highlighting significantly upregulated and downregulated genes (.png, .pdf, .html).
               inputs:
-                - label: Differential expression results (TSV)
+                - label: Differential expression results
                   datatypes:
-                    - tsv
+                    - txt
               outputs:
                 - label: Volcano plot visualisation
               button_md: Run Volcano plot
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fvolcanoplot%2Fvolcanoplot"
+
+        - id: ora_analysis
+          title: Pathway over-representation analysis
+          content:
+            - title_md: <code>KEGG database</code> - Identify pathways represented by DEGs
+              description_md: |
+                Perform pathway over-representation analysis to identify biological pathways from the KEGG database that are represented by the DEGs reported by edgeR.
+
+                Note: The AGRF Bionformatics pipeline also queries the Gene Ontology (GO) and Reactome databases, and generates additional outputs for each.
+
+                Output: Produces ORA result tables containing pathway size, number of hits, and adjusted p-values (.tsv, .txt).
+              inputs:
+                - label: Differential expression results
+                  datatypes:
+                    - txt
+              outputs:
+                - label: ORA results (TSV)
+              button_md: Run KEGG-ORA
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fgoeckslab%2Fkegg_ora%2Fkegg_ora%2F0.1.0%2Bgalaxy1&version=latest"            
 
   - id: tutorials
     title: Tutorials
