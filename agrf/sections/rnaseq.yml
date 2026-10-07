@@ -193,7 +193,7 @@ tabs:
         - id: quantification
           title: Gene expression quantification
           content:
-            - title_md: <code>featureCounts</code> - Quantify reads counts per gene
+            - title_md: <code>featureCounts</code> - Quantify read counts per gene
               description_md: |
                 Count the number of reads assigned to genes using aligned BAM files and a gene annotation file. This step converts uniquely mapped reads into gene-level count information for each sample, which can then be merged into a single matrix for downstream statistical analysis using tools like edgeR.
 
