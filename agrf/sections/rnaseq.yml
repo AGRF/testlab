@@ -159,7 +159,7 @@ tabs:
               description_md: |
                 Sort aligned BAM files by genomic coordinates. Sorting is required for many downstream tools including indexing, visualisation, and read quantification workflows.
 
-                Output: Produces sorted alignment files suitable for downstream analysis (.bam.bai).
+                Output: Produces sorted alignment files suitable for downstream analysis (.bam).
 
               inputs:
                 - label: Aligned reads
@@ -258,9 +258,9 @@ tabs:
 
                 Output: Produces heatmap visualisations showing expression patterns across selected genes and samples (.png, .pdf).
               inputs:
-                - label: Differential expression results
+                - label: Normalised expression matrix
                   datatypes:
-                    - txt
+                    - tsv
               outputs:
                  - label: Heatmap visualisation
               button_md: Run Heatmap
